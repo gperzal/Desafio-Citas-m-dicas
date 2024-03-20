@@ -36,12 +36,31 @@ app.post('/register', async (req, res) => {
 });
 
 
+function printUsers(users) {
+    const women = users.filter(user => user.gender === 'female');
+    const men = users.filter(user => user.gender === 'male');
+
+    // La propiedad `name` contiene el nombre completo del usuario, no hay `name.first` o `name.last`.
+    const formatUser = (user, index) => `${index + 1}. Nombre: ${user.name} - Apellido: ${user.last} - ID: ${user.id} - Timestamp: ${user.timestamp}`;
+
+    console.log(chalk.blue.bgWhite('Mujeres:'));
+    women.forEach((user, index) => {
+        console.log(chalk.blue.bgWhite(formatUser(user, index)));
+    });
+  
+    console.log(chalk.blue.bgWhite('\nHombres:'));
+    men.forEach((user, index) => {
+        console.log(chalk.blue.bgWhite(formatUser(user, index)));
+    });
+}
+
 // Endpoint para consultar todos los usuarios
 app.get('/users', (req, res) => {
 
     const groupedUsers = _.groupBy(users, 'gender');
     // Imprimir la lista en la consola con Chalk
-    console.log(chalk.bgWhite.blue(JSON.stringify(groupedUsers, null, 2)));
+    // console.log(chalk.bgWhite.blue(JSON.stringify(groupedUsers, null, 2)));
+    printUsers(users);
     res.json(groupedUsers);
 });
 
