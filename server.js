@@ -35,6 +35,7 @@ app.post('/register', async (req, res) => {
     }
 });
 
+// Function List Users Chalk
 
 function printUsers(users) {
     const women = users.filter(user => user.gender === 'female');
