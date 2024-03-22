@@ -18,7 +18,7 @@ app.post('/register', async (req, res) => {
         const userData = response.data.results[0];
 
         const user = {
-            id: uuidv4(),
+            id: uuidv4().slice(0, 6),
             name: userData.name.first,
             last: userData.name.last,
             gender: userData.gender,
@@ -48,7 +48,7 @@ function printUsers(users) {
     women.forEach((user, index) => {
         console.log(chalk.blue.bgWhite(formatUser(user, index)));
     });
-  
+
     console.log(chalk.blue.bgWhite('\nHombres:'));
     men.forEach((user, index) => {
         console.log(chalk.blue.bgWhite(formatUser(user, index)));
