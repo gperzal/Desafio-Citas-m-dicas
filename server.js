@@ -10,6 +10,7 @@ const port = 3000;
 let users = [];
 
 app.use(express.json());
+app.use(express.static('assets'));
 
 // Endpoint para registrar un nuevo usuario
 app.post('/register', async (req, res) => {
@@ -44,15 +45,17 @@ function printUsers(users) {
     // La propiedad `name` contiene el nombre completo del usuario, no hay `name.first` o `name.last`.
     const formatUser = (user, index) => `${index + 1}. Nombre: ${user.name} - Apellido: ${user.last} - ID: ${user.id} - Timestamp: ${user.timestamp}`;
 
-    console.log(chalk.blue.bgWhite('Mujeres:'));
-    women.forEach((user, index) => {
-        console.log(chalk.blue.bgWhite(formatUser(user, index)));
-    });
 
     console.log(chalk.blue.bgWhite('\nHombres:'));
     men.forEach((user, index) => {
         console.log(chalk.blue.bgWhite(formatUser(user, index)));
     });
+    console.log(chalk.blue.bgWhite('Mujeres:'));
+    women.forEach((user, index) => {
+        console.log(chalk.blue.bgWhite(formatUser(user, index)));
+    });
+
+
 }
 
 // Endpoint para consultar todos los usuarios
@@ -65,6 +68,7 @@ app.get('/users', (req, res) => {
     res.json(groupedUsers);
 });
 
+
 app.listen(port, () => {
-    console.log(`Servidor escuchando en http://localhost:${port}/users`);
+    console.log(`Servidor escuchando en http://localhost:${port}`);
 });
