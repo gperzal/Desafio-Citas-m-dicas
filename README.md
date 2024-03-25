@@ -6,7 +6,7 @@ Este proyecto es un sistema de gestión de citas médicas que permite registrar 
 
 La aplicación está desplegada en Render y se puede acceder a través del siguiente enlace:
 
-[Desafío Black and White en Render](https://citas-medicas-fkkc.onrender.com)
+[Desafío Citas Médicas en Render](https://citas-medicas-fkkc.onrender.com)
 
 ## Tecnologías Utilizadas
 
